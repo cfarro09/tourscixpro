@@ -1,0 +1,13 @@
+[
+	{
+		"name": "delycomps.com",
+		"host": "",
+		"port": 21,
+		"type": "ftp",
+		"username": "carlosfarro",
+		"password": "IfarroPAD12solrac",
+		"path": "/tourscixpro/",
+		"autosave": true,
+		"confirm": true
+	}
+]

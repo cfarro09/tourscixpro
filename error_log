@@ -1,0 +1,36 @@
+[03-Jun-2019 23:37:41 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 112
+[03-Jun-2019 23:37:42 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 112
+[03-Jun-2019 23:38:46 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 112
+[03-Jun-2019 23:38:47 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 112
+[18-Jun-2019 19:57:30 UTC] PHP Fatal error:  Class 'Restserver\Libraries\REST_Controller' not found in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 5
+[18-Jun-2019 20:03:26 UTC] PHP Fatal error:  Class 'Restserver\Libraries\REST_Controller' not found in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 5
+[18-Jun-2019 20:03:52 UTC] PHP Fatal error:  Class 'Restserver\Libraries\REST_Controller' not found in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 5
+[18-Jun-2019 20:03:56 UTC] PHP Fatal error:  Class 'Restserver\Libraries\REST_Controller' not found in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 5
+[19-Jun-2019 00:36:15 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 36
+[19-Jun-2019 00:36:41 UTC] PHP Fatal error:  Call to a member function get_data_dynamic() on null in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 35
+[19-Jun-2019 00:37:53 UTC] PHP Fatal error:  Call to a member function get_data_dynamic() on null in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 35
+[19-Jun-2019 00:38:05 UTC] PHP Fatal error:  Call to a member function get_data_dynamic() on null in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 35
+[19-Jun-2019 00:41:45 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-Jun-2019 00:42:44 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-Jun-2019 00:43:05 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-Jun-2019 00:44:05 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[20-Jun-2019 17:57:51 UTC] PHP Fatal error:  Call to undefined method Lugar_turistico::get_menu_dynamic() in /home/carlosfarro/public_html/tourscixpro/application/controllers/Lugar_turistico.php on line 17
+[20-Jun-2019 17:59:23 UTC] PHP Fatal error:  Call to private method General_model::get_menu_dynamic() from context 'Lugar_turistico' in /home/carlosfarro/public_html/tourscixpro/application/controllers/Lugar_turistico.php on line 17
+[20-Jun-2019 17:59:24 UTC] PHP Fatal error:  Call to private method General_model::get_menu_dynamic() from context 'Lugar_turistico' in /home/carlosfarro/public_html/tourscixpro/application/controllers/Lugar_turistico.php on line 17
+[20-Aug-2019 05:07:25 UTC] PHP Parse error:  syntax error, unexpected 'defined' (T_STRING) in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 2
+[20-Aug-2019 05:07:33 UTC] PHP Parse error:  syntax error, unexpected 'defined' (T_STRING) in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 2
+[20-Aug-2019 05:08:01 UTC] PHP Parse error:  syntax error, unexpected 'defined' (T_STRING) in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 2
+[20-Aug-2019 05:08:13 UTC] PHP Parse error:  syntax error, unexpected 'defined' (T_STRING) in /home/carlosfarro/public_html/tourscixpro/application/controllers/api/Tourscix.php on line 2
+[25-Aug-2019 06:22:48 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 36
+[25-Aug-2019 06:23:01 UTC] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/carlosfarro/public_html/tourscixpro/application/models/General_model.php on line 36
+[25-Aug-2019 19:10:20 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/carlosfarro/public_html/tourscixpro/system/database/drivers/mysqli/mysqli_driver.php on line 393
+[01-Dec-2019 05:31:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/carlosfarro/public_html/tourscixpro/cron_handler.php on line 14
+[08-Dec-2019 05:09:23 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[12-Dec-2019 04:21:51 UTC] PHP Parse error:  syntax error, unexpected '/' in /home/carlosfarro/public_html/tourscixpro/application/views/lugar_turistico/listar.php on line 53
+[03-Jan-2020 04:30:09 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:30:19 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:33:20 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:33:22 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:33:33 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:33:45 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
+[03-Jan-2020 04:34:01 UTC] PHP Fatal error:  Call to a member function fetch_object() on null in /home/carlosfarro/public_html/tourscixpro/cronactualizarmensualanual.php on line 22
