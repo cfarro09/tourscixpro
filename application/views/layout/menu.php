@@ -114,7 +114,7 @@
       </li>
       <li class="menu-title" id="">Avisos</li>
       <li>
-        <a href="<?= site_url() ?>publicidad">
+        <a href="<?= site_url() ?>avisopub">
           <i  class="fa fa-paper"></i><span>Modulo Publicidad</span>
         </a>
       </li>

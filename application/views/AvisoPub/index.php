@@ -16,13 +16,6 @@
         display: none;
     }
 
-    .borderfile {
-        border: 1px solid #c0bbbb;
-        border-radius: 15px;
-        margin-bottom: 5px;
-        padding: 0px;
-    }
-
     .imagex {
         border-radius: 15px 15px 0 0;
     }
@@ -60,33 +53,7 @@
                             <button type="button" class="mr-3 btn btn-outline-primary" data-toggle="modal" data-target="#moperacion">Agregar Aviso</button>
                         </div>
                     </div>
-
-                    <table id="datatable-buttons" class="table table-hover table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>TITULO</th>
-                                <th>DESCRIPCIÓN</th>
-                                <th>IMAGEN</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (isset($pub) && $pub) : ?>
-                                <?php foreach ($pub as $row) : ?>
-                                    <tr>
-
-                                        <td><?= $row->titulo ?></td>
-                                        <td><?= $row->descripcion ?></td>
-                                        <td><?= $row->imagen ?></td>
-                                        <td class="text-center">
-                                            <a href="<?= site_url() ?>lugar_turistico/editar/<?= $row->cod_lugar ?>"><i class="action fa fa-edit edit_list"></i></a>
-                                            <a href="#" data-action="lugar_turistico/delete_listar" data-tosend="cod_lugar=<?= $row->cod_lugar ?>" class="fa fa-trash pl-2 remove_list action"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach ?>
-                            <?php endif ?>
-                        </tbody>
-                    </table>
+                    <table id="maintable" class="display" width="100%"></table>
                 </div>
             </div>
         </div>
@@ -102,34 +69,61 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 col-xs-6">
-                        <div class="form-group ">
-                            <label for="titulo">Titulo:</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" required>
+            <form id="foperacion">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group ">
+                                <label for="titulo">Titulo:</label>
+                                <input type="text" class="form-control" autocomplete="off" id="titulo" oninput="changeinputs(this)" name="titulo" placeholder="Titulo">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group ">
+                                <label for="descripcion">Descripción:</label>
+                                <input type="text" class="form-control" autocomplete="off" id="descripcion" oninput="changeinputs(this)" name="descripcion" placeholder="Descripcion">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xs-6">
-                        <div class="form-group ">
-                            <label for="descripcion">Descripción:</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" required>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group ">
+                                <label for="titulocolor">Color Titulo:</label>
+                                <input type="color" class="form-control" autocomplete="off" id="titulocolor" oninput="changeinputs(this)" name="titulocolor" placeholder="titulocolor">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group ">
+                                <label for="descripcioncolor">Color Descripción:</label>
+                                <input type="color" class="form-control" autocomplete="off" id="descripcioncolor" oninput="changeinputs(this)" name="descripcioncolor" placeholder="Descripcioncolor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center py-2">
+                        <label class="custom-file-upload pointer mb-0" style="font-size: 20px; bottom: 0px">
+                            <input type="file" name="upload_image" id="upload_image" class="upload_image" data-tag="rutafoto" accept="image/*">
+                            <span><i class="fa fa-camera pointer" style="font-size: 20px;"></i></span>
+                            <span class="" style="color: #c3c3c3; font-size: 16px">Subir Foto</span>
+                        </label>
+                    </div>
+                    <div class="">
+                        <div class="position-relative mx-auto" style="width: 400px; height: 400px; border: 1px solid #9c9c9c">
+                            <div class="position-absolute" style="top: 10px; text-align: center; width: 400px;">
+                                <h2 id="titulotest" style="color: black" class="font-weight-bold">
+                                    </h3>
+                            </div>
+                            <img id="imagen" width="400px" alt="">
+                            <div class="position-absolute" style="bottom: 10px; text-align: center; width: 400px;">
+                                <p style="font-size: 20px;color: black; font-weight: bold" id="descripciontest"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center py-2">
-                    <label class="custom-file-upload pointer mb-0" style="font-size: 20px; bottom: 0px">
-                        <input type="file" name="upload_image" id="upload_image" class="upload_image" data-tag="rutafoto" accept="image/*">
-                        <span><i class="fa fa-camera pointer" style="font-size: 20px;"></i></span>
-                        <span class="" style="color: #c3c3c3; font-size: 16px">Subir Foto (210 x 280)</span>
-                    </label>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -204,6 +198,29 @@
         reader.readAsDataURL(e.target.files[0]);
         $('#uploadimageModal').modal('show');
     }
+    const fetch_post_json = async (url, data) => {
+        var form_data = new FormData();
+
+        for (var key in data) {
+            form_data.append(key, data[key]);
+        }
+
+        $("#loading-circle-overlay").show();
+        const response = await fetch(url, {
+            method: 'POST',
+            body: form_data,
+        });
+        $("#loading-circle-overlay").hide();
+        if (response.ok) {
+            try {
+                return await response.json();
+            } catch (e) {
+                toast_error('¡Oh, hubo un error!', 'Vuelva a intentarlo.');
+            }
+        } else {
+            toast_error('¡Oh, hubo un error!', 'Vuelva a intentarlo.');
+        }
+    }
     const fetch_post = async (url, data) => {
         $("#loading-circle-overlay").show();
         const response = await fetch(url, {
@@ -221,6 +238,12 @@
             toast_error('¡Oh, hubo un error!', 'Vuelva a intentarlo.');
         }
     }
+    const changeinputs = e => {
+        if (e.id.includes("color")) {
+            document.querySelector(`#${e.id.split("color")[0]}test`).style.color = e.value;
+        } else
+            document.querySelector(`#${e.id}test`).textContent = e.value;
+    }
     const clickimagecropper = () => {
         var selector;
         var selector_img;
@@ -231,33 +254,77 @@
         }).then(function(response) {
             let formData = new FormData();
             formData.append('image', response);
-            fetch_post('publicidad/loadimage', formData)
+            fetch_post('AvisoPub/loadimage', formData)
                 .then(res => {
                     if (res) {
                         $('#uploadimageModal').modal('hide');
                         $("#loading-circle-overlay").hide();
                         $image_crop.croppie('destroy');
-                        selector_img = selector.closest('div');
-                        selector_img = selector.closest(".divparent").children('.imagex');
-
-                        selector_img.attr('src', res.rutafoto);
+                        imagen.src = res.rutafoto
                     }
                 });
         })
     }
+    const guardar = e => {
+        e.preventDefault();
+        console.log("guardar");
+        if (!imagen.src) {
+            toast_error('¡Oh, hubo un error!', 'Debes seleccionar una imagen.');
+            return
+        }
+        const ima = imagen.src;
+        const des = `${descripcion.value}&&&${descripcioncolor.value}`;
+        const tit = `${titulo.value}&&&${titulocolor.value}`;
+        const data = {
+            descripcion: des,
+            titulo: tit,
+            imagen: ima
+        }
+        fetch_post_json('AvisoPub/guardar', data)
+            .then(res => {
+                if (res) {
+                    $('#moperacion').modal('hide');
+                    $("#loading-circle-overlay").hide();
+                    inittable();
+                }
+            });
+    }
 
-    (function() {
-        const table = $('#datatable-buttons').DataTable({
-            lengthChange: false,
-            buttons: ['excel', 'pdf', 'colvis'],
-            scrollX: true,
-            dom: "<'row'<'col-sm-3'f><'col-sm-3'l><'col-sm-6'p>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-        });
-        table.buttons().container()
-            .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-        upload_image.addEventListener("change", changeupload)
-        crop_image.addEventListener("click", clickimagecropper)
-    })();
+    const inittable = async () => {
+            const data = await fetch_post_json('AvisoPub/getlist', null).then(r => r);
+            if (!Array.isArray(data))
+                return
+
+            const table = $('#maintable').DataTable({
+                // lengthChange: false,
+                // buttons: ['excel', 'pdf', 'colvis'],
+                // scrollX: true,
+                // dom: "<'row'<'col-sm-3'f><'col-sm-3'l><'col-sm-6'p>>" +
+                //     "<'row'<'col-sm-12'tr>>" +
+                //     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                data: data,
+                destroy: true,
+                columns: [{
+                        title: 'Titulo',
+                        data: 'titulo'
+                    },
+                    {
+                        title: 'Descripcion',
+                        data: 'descripcion'
+                    },
+                    {
+                        title: 'Imagen',
+                        data: 'imagen'
+                    },
+                ]
+            });
+            // table.buttons().container()
+            //     .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+        }
+        (function() {
+            inittable();
+            upload_image.addEventListener("change", changeupload);
+            crop_image.addEventListener("click", clickimagecropper);
+            foperacion.addEventListener("submit", guardar);
+        })();
 </script>
