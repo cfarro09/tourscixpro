@@ -1,4 +1,3 @@
-
 <link href="<?= base_url() ?>assets/css/form/css.css" rel="stylesheet">
 <link href="<?= base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/croppie.css" />
@@ -118,7 +117,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
@@ -269,29 +268,35 @@
         $("#moperacion").modal();
 
         titulo.value = "";
-        titulocolor.value = "";
         descripcion.value = "";
-        descripcioncolor.value = "";
         imagen.src = ""
+
+        titulocolor.value = "#000";
+        descripcioncolor.value = "#000";
 
         titulotest.textContent = "";
         descripciontest.textContent = "";
+        
+        titulotest.style.color = "#000";
+        descripciontest.style.color = "#000";
     }
     const edit = async (id) => {
         moperacion_titulo.textContent = "EDITAR AVISO"
         idoperacion.value = id;
-        const ff = {id}
+        const ff = {
+            id
+        }
         const data = await fetch_post_json('AvisoPub/getlist', ff).then(r => r);
         if (!Array.isArray(data))
             return
         const row = data[0];
-        if(row){
-            const tit = row.titulo.split("####")[0];
-            const titcolor = row.titulo.split("####")[1];
+        if (row) {
+            const tit = row.titulo.split("###")[0];
+            const titcolor = row.titulo.split("###")[1];
 
-            const desc = row.descripcion.split("####")[0];
-            const desccolor = row.descripcion.split("####")[1];
-            
+            const desc = row.descripcion.split("###")[0];
+            const desccolor = row.descripcion.split("###")[1];
+
             titulo.value = tit;
             titulocolor.value = titcolor;
             descripcion.value = desc;
@@ -300,17 +305,25 @@
 
             titulotest.textContent = tit;
             descripciontest.textContent = desc;
+
+            titulotest.style.color = titcolor;
+            descripciontest.style.color = desccolor;
+
+            titulotest.style.color = titcolor;
+            descripciontest.style.color = desccolor;
         }
         $("#moperacion").modal();
     }
     const removerow = (id, status) => {
-        if(status){
+        if (status) {
             toast_error("...", "No puedes eliminar un aviso seleccionado.")
             return
         }
-        const callback = async  () => {
-            const data = await fetch_post_json('AvisoPub/removerow', {id}).then(r => r);
-            if(data && data.success){
+        const callback = async () => {
+            const data = await fetch_post_json('AvisoPub/removerow', {
+                id
+            }).then(r => r);
+            if (data && data.success) {
                 $("#loading-circle-overlay").hide();
                 inittable();
             }
@@ -318,9 +331,12 @@
         swal_question("No podrás revertir este cambio.", callback)
     }
     const selectad = (id, status) => {
-        const callback = async  () => {
-            const data = await fetch_post_json('AvisoPub/selectad', {id, status}).then(r => r);
-            if(data && data.success){
+        const callback = async () => {
+            const data = await fetch_post_json('AvisoPub/selectad', {
+                id,
+                status
+            }).then(r => r);
+            if (data && data.success) {
                 $("#loading-circle-overlay").hide();
                 inittable();
             }
@@ -342,7 +358,7 @@
             titulo: tit,
             imagen: ima
         }
-        if(idoperacion.value != "0" && idoperacion.value){
+        if (idoperacion.value != "0" && idoperacion.value) {
             data["id"] = idoperacion.value;
         }
         fetch_post_json('AvisoPub/guardar', data)
@@ -355,28 +371,45 @@
             });
     }
     const inittable = async () => {
-            const data = await fetch_post_json('AvisoPub/getlist', null).then(r => r);
+            let data = await fetch_post_json('AvisoPub/getlist', null).then(r => r);
             if (!Array.isArray(data))
                 return
+            data = data.map(x => {
+                return {
+                    ...x,
+                    ["titulo"]: x.titulo.split("###")[0],
+                    ["descripcion"]: x.descripcion.split("###")[0],
+                }
+            })
             const table = $('#maintable').DataTable({
                 lengthChange: false,
                 data: data,
                 destroy: true,
                 columnDefs: [{
-                    targets: -1,
-                    className: "text-center",
-                    render: function(data, type, row) {
-                        const style = row.selected && row.selected != "0" ? "style = 'color: #28a745'" : "";
-                        const status = row.selected && row.selected != "0" ? true : false;
-                        return `
+                        targets: -1,
+                        className: "text-center",
+                        render: function(data, type, row) {
+                            const style = row.selected && row.selected != "0" ? "style = 'color: #28a745'" : "";
+                            const status = row.selected && row.selected != "0" ? true : false;
+                            return `
                             <div class="text-center">
                                 <a href="#"><i class="action fa fa-edit" onclick="edit(${row.id})"></i></a>
                                 <a href="#"><i class="action fa fa-trash pl-2" onclick="removerow(${row.id}, ${status})"></i></a>
                                 <a href="#"><i ${style} class="action fa fa-play pl-2" onclick="selectad(${row.id}, ${status})"></i></a>
                             </div>
                             `;
+                        }
+                    },
+                    {
+                        targets: -2,
+                        className: "text-center",
+                        render: function(data, type, row) {
+                            return `
+                                <img width="80px" src="${row.imagen}">
+                                `;
+                        }
                     }
-                }],
+                ],
                 columns: [{
                         title: 'TITULO',
                         data: 'titulo'

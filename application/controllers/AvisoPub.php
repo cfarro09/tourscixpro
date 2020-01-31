@@ -71,8 +71,7 @@ class AvisoPub extends CI_Controller
             $this->General_model->edit_dynamic('aviso', false, array("selected" => 0));
             $response = $this->General_model->edit_dynamic('aviso', array("id" => $id), array("selected" => 1));
         }else{
-            
-            $this->General_model->edit_dynamic('propiedades', array("valor" => 0), array("llave" => "avisoid"));
+            $this->General_model->edit_dynamic('propiedades', array("llave" => "avisoid"), array("valor" => "0"));
             $response = $this->General_model->edit_dynamic('aviso', array("id" => $id), array("selected" => 0));
         }
         echo json_encode($response, 256);
