@@ -37,12 +37,44 @@ class AvisoPub extends CI_Controller
     public function guardar()
     {
         $data = html_purify($this->input->post());
-        $response = $this->General_model->insert_dynamic('aviso', $data);
+        $where = false;
+        $id = html_purify($this->input->post("id"));
+        if(isset($id) && $id){
+            $where = array("id" => $id);
+            unset($data['id']);
+        }
+        $response = $this->General_model->save_register_dynamic('aviso', $data, $where);
         echo json_encode($response);
     }
     public function getlist()
     {
-        $data = $this->General_model->get_data_dynamic('aviso', "*");
-        echo json_encode($data);
+        $id = html_purify($this->input->post("id"));
+        $where = false;
+        if(isset($id) && $id)
+            $where = array("id" => $id);
+        $data = $this->General_model->get_data_dynamic('aviso', "*", false, $where);
+        echo json_encode($data, 256);
+    }
+    public function removerow()
+    {
+        $id = html_purify($this->input->post("id"));
+        $response = $this->General_model->delete_dynamic('aviso', array("id" => $id));
+        echo json_encode($response, 256);
+    }
+    public function selectad()
+    {
+        $id = html_purify($this->input->post("id"));
+        $status = html_purify($this->input->post("status"));
+        $status = $status == "false" ? false : true;
+        if(!$status){
+            $this->General_model->edit_dynamic('propiedades', array("llave" => "avisoid"), array("valor" => $id));
+            $this->General_model->edit_dynamic('aviso', false, array("selected" => 0));
+            $response = $this->General_model->edit_dynamic('aviso', array("id" => $id), array("selected" => 1));
+        }else{
+            
+            $this->General_model->edit_dynamic('propiedades', array("valor" => 0), array("llave" => "avisoid"));
+            $response = $this->General_model->edit_dynamic('aviso', array("id" => $id), array("selected" => 0));
+        }
+        echo json_encode($response, 256);
     }
 }

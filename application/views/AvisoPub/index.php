@@ -1,7 +1,4 @@
-<?php
-// var_dump($lugares);
 
-?>
 <link href="<?= base_url() ?>assets/css/form/css.css" rel="stylesheet">
 <link href="<?= base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/croppie.css" />
@@ -50,10 +47,10 @@
 
                     <div class="row mb-2">
                         <div class="col-md-12 col-xs-12 text-right">
-                            <button type="button" class="mr-3 btn btn-outline-primary" data-toggle="modal" data-target="#moperacion">Agregar Aviso</button>
+                            <button type="button" class="mr-3 btn btn-outline-primary" onclick="registrar()">Agregar Aviso</button>
                         </div>
                     </div>
-                    <table id="maintable" class="display" width="100%"></table>
+                    <table id="maintable" class="display table table-bordered" width="100%"></table>
                 </div>
             </div>
         </div>
@@ -64,7 +61,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Registrar Aviso</h5>
+                <h5 class="modal-title" id="moperacion_titulo">Registrar Aviso</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -72,6 +69,7 @@
             <form id="foperacion">
                 <div class="modal-body">
                     <div class="row">
+                        <input type="hidden" id="idoperacion">
                         <div class="col-md-6 col-xs-6">
                             <div class="form-group ">
                                 <label for="titulo">Titulo:</label>
@@ -265,6 +263,70 @@
                 });
         })
     }
+    const registrar = () => {
+        idoperacion.value = 0;
+        moperacion_titulo.textContent = "REGISTRAR AVISO"
+        $("#moperacion").modal();
+
+        titulo.value = "";
+        titulocolor.value = "";
+        descripcion.value = "";
+        descripcioncolor.value = "";
+        imagen.src = ""
+
+        titulotest.textContent = "";
+        descripciontest.textContent = "";
+    }
+    const edit = async (id) => {
+        moperacion_titulo.textContent = "EDITAR AVISO"
+        idoperacion.value = id;
+        const ff = {id}
+        const data = await fetch_post_json('AvisoPub/getlist', ff).then(r => r);
+        if (!Array.isArray(data))
+            return
+        const row = data[0];
+        if(row){
+            const tit = row.titulo.split("####")[0];
+            const titcolor = row.titulo.split("####")[1];
+
+            const desc = row.descripcion.split("####")[0];
+            const desccolor = row.descripcion.split("####")[1];
+            
+            titulo.value = tit;
+            titulocolor.value = titcolor;
+            descripcion.value = desc;
+            descripcioncolor.value = desccolor;
+            imagen.src = row.imagen
+
+            titulotest.textContent = tit;
+            descripciontest.textContent = desc;
+        }
+        $("#moperacion").modal();
+    }
+    const removerow = (id, status) => {
+        if(status){
+            toast_error("...", "No puedes eliminar un aviso seleccionado.")
+            return
+        }
+        const callback = async  () => {
+            const data = await fetch_post_json('AvisoPub/removerow', {id}).then(r => r);
+            if(data && data.success){
+                $("#loading-circle-overlay").hide();
+                inittable();
+            }
+        }
+        swal_question("No podrás revertir este cambio.", callback)
+    }
+    const selectad = (id, status) => {
+        const callback = async  () => {
+            const data = await fetch_post_json('AvisoPub/selectad', {id, status}).then(r => r);
+            if(data && data.success){
+                $("#loading-circle-overlay").hide();
+                inittable();
+            }
+        }
+        swal_question("Estas segura de seleccionar este aviso publicitario.", callback)
+    }
     const guardar = e => {
         e.preventDefault();
         console.log("guardar");
@@ -273,12 +335,15 @@
             return
         }
         const ima = imagen.src;
-        const des = `${descripcion.value}&&&${descripcioncolor.value}`;
-        const tit = `${titulo.value}&&&${titulocolor.value}`;
+        const des = `${descripcion.value}###${descripcioncolor.value}`;
+        const tit = `${titulo.value}###${titulocolor.value}`;
         const data = {
             descripcion: des,
             titulo: tit,
             imagen: ima
+        }
+        if(idoperacion.value != "0" && idoperacion.value){
+            data["id"] = idoperacion.value;
         }
         fetch_post_json('AvisoPub/guardar', data)
             .then(res => {
@@ -289,37 +354,47 @@
                 }
             });
     }
-
     const inittable = async () => {
             const data = await fetch_post_json('AvisoPub/getlist', null).then(r => r);
             if (!Array.isArray(data))
                 return
-
             const table = $('#maintable').DataTable({
-                // lengthChange: false,
-                // buttons: ['excel', 'pdf', 'colvis'],
-                // scrollX: true,
-                // dom: "<'row'<'col-sm-3'f><'col-sm-3'l><'col-sm-6'p>>" +
-                //     "<'row'<'col-sm-12'tr>>" +
-                //     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                lengthChange: false,
                 data: data,
                 destroy: true,
+                columnDefs: [{
+                    targets: -1,
+                    className: "text-center",
+                    render: function(data, type, row) {
+                        const style = row.selected && row.selected != "0" ? "style = 'color: #28a745'" : "";
+                        const status = row.selected && row.selected != "0" ? true : false;
+                        return `
+                            <div class="text-center">
+                                <a href="#"><i class="action fa fa-edit" onclick="edit(${row.id})"></i></a>
+                                <a href="#"><i class="action fa fa-trash pl-2" onclick="removerow(${row.id}, ${status})"></i></a>
+                                <a href="#"><i ${style} class="action fa fa-play pl-2" onclick="selectad(${row.id}, ${status})"></i></a>
+                            </div>
+                            `;
+                    }
+                }],
                 columns: [{
-                        title: 'Titulo',
+                        title: 'TITULO',
                         data: 'titulo'
                     },
                     {
-                        title: 'Descripcion',
+                        title: 'DESCRIPCION',
                         data: 'descripcion'
                     },
                     {
-                        title: 'Imagen',
+                        title: 'IMAGEN',
                         data: 'imagen'
+                    },
+                    {
+                        title: 'ACCION',
+                        data: null
                     },
                 ]
             });
-            // table.buttons().container()
-            //     .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
         }
         (function() {
             inittable();

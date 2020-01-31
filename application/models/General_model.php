@@ -27,6 +27,10 @@ where (concurrencia = 'Mensual' or concurrencia = 'Anual') and fecha_fest < now(
         // var_dump($this->db->error()); die;
         return $response;
     }
+    function get_query($query){
+        $query = $this->db->query($query);
+        return ($query->num_rows() >= 1) ? $query->result() : false;
+    }
 	//GET COLUMN'S NAME OF USUARIOS AND DATA
     function get_columns_name($name_table){
     	$sql=" SHOW FULL COLUMNS FROM " . $name_table . ";";
@@ -129,11 +133,12 @@ where (concurrencia = 'Mensual' or concurrencia = 'Anual') and fecha_fest < now(
                 "msg" => "Hubo un problema, vuelva a intentarlo."
             );
         }
-        // var_dump($this->db->error()); die;
+        // var_dump($this->db->error()); die;f
         return $response;
     }
     function edit_dynamic($name_table, $where, $data){
-        $this->db->where($where);
+        if($where)
+            $this->db->where($where);
         $this->db->update($name_table, $data);
         if ($this->db->affected_rows() > 0) {
             $response = array(
@@ -159,6 +164,26 @@ where (concurrencia = 'Mensual' or concurrencia = 'Anual') and fecha_fest < now(
         $this->db->select("*");
         $query = $this->db->get("Tipos_documentos");
         return ($query->num_rows() >= 1) ? $query->result() : false;
+    }
+    function save_register_dynamic($nametable, $data, $where){
+        if(!$where)
+            $this->db->insert($nametable, $data);
+        else{
+            $this->db->where($where);
+            $this->db->update($nametable, $data);
+        }
+        if ($this->db->affected_rows() > 0) {
+            $response = array(
+                "success" => true,
+                "msg" => $where ? "Se registró satisfactoriamente." : "Se editó satisfactoriamente."
+            );
+        }else{
+            $response = array(
+                "success" => false,
+                "msg" => "Hubo un problema, vuelva."
+            );
+        }
+        return $response;
     }
     function insert_dynamic_array_($nametable, $array) {
         $this->db->insert_batch($nametable, $array);

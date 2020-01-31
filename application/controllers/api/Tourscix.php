@@ -10,7 +10,8 @@ class Tourscix extends REST_Controller {
 	}
 
 	// new api
-	public function syncManage_post() {
+	public function syncManage_post() 
+	{
 		$codUpdateFestividad = html_purify($this->input->post('codUpdateFestividad'));
 		$codUpdateLugar = html_purify($this->input->post('codUpdateLugar'));
 		$views = html_purify($this->input->post('views'));
@@ -19,12 +20,10 @@ class Tourscix extends REST_Controller {
 		{
 		    $views = json_decode($views);
 		    foreach ($views->lugares as $id => $valor)
-                $response = $this->General_model->update_dynamic('lugar_turisticoaux', array("cod_lugar" => $id), array("views" => 'views + ' . $valor));
-            
+                $this->General_model->update_dynamic('lugar_turisticoaux', array("cod_lugar" => $id), array("views" => 'views + ' . $valor));
             
             foreach ($views->festividades as $id => $valor) 
-                $response = $this->General_model->update_dynamic('festividad', array("cod_fest" => $id), array("views" => 'views + ' . $valor));
-
+                $this->General_model->update_dynamic('festividad', array("cod_fest" => $id), array("views" => 'views + ' . $valor));
 		}
 
 		$res_max = $this->General_model->get_data_dynamic('lugar_turisticoaux', "max(codUpdate) as max");
@@ -32,7 +31,8 @@ class Tourscix extends REST_Controller {
 		$res_max1 = $this->General_model->get_data_dynamic('festividad', "max(codUpdate) as max");
 		$maxCodeFestividad = $res_max1[0]->max;
 
-		if($codUpdateLugar && $codUpdateLugar != 0){
+		if($codUpdateLugar && $codUpdateLugar != 0)
+		{
 			$lugares = $this->General_model->get_data_dynamic('lugar_turisticoaux', "*", false, array('codUpdate >' => $codUpdateLugar));
 			$festividades = $this->General_model->get_data_dynamic('festividad', "*", false, array('codUpdate >' => $codUpdateFestividad));
 
@@ -40,9 +40,12 @@ class Tourscix extends REST_Controller {
 				'codUpdateFestividad' => $maxCodeFestividad,
 				'codUpdateLugar' => $maxCodeLugar,
 				'lugares' => $lugares ? $lugares : [], 
-				'festividades' => $festividades ? $festividades : []
+				'festividades' => $festividades ? $festividades : [],
+				'aviso' => array("execute" => false)
 			);
-		}else{
+		}
+		else
+		{
 			$lugares = $this->General_model->get_data_dynamic('lugar_turisticoaux', "*", false, array('estado' => "H"));
 			$festividades = $this->General_model->get_data_dynamic('festividad', "*", false, array('estado' => "H"));
 
@@ -50,9 +53,22 @@ class Tourscix extends REST_Controller {
 				'codUpdateFestividad' => $maxCodeFestividad,
 				'codUpdateLugar' => $maxCodeLugar,
 				'lugares' => $lugares, 
-				'festividades' => $festividades
+				'festividades' => $festividades,
+				'aviso' => array("execute" => false)
 			);
 		}
+		$query = 'select a.titulo, a.descripcion, a.imagen from propiedades p inner join aviso a on a.id = p.valor where p.llave = "avisoid" and p.valor <> "0"';
+		
+		$res = $this->General_model->get_query($query);
+		if($res){
+			$response["aviso"] = array(
+				"execute" => true,
+				"titulo" => $res[0]->titulo,
+				"descripcion" => $res[0]->descripcion,
+				"imagen" => $res[0]->imagen
+			);
+		}
+
 		$this->response($response);
 	}
 	//end newapi
