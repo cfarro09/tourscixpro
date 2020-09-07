@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Adminox - Responsive Web App Kit</title>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        
+        <title>Mochiklero App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -75,7 +75,7 @@
                                     <div class="account-logo-box">
                                         <h2 class="text-uppercase text-center">
                                             <a href="index.html" class="text-success">
-                                                <span><img src="<?=base_url()?>assets/images/logo_dark.png" alt="" height="30"></span>
+                                                <span><img src="<?=base_url()?>assets/images/imagesuser/M4.png" alt="" height="100"></span>
                                             </a>
                                         </h2>
                                     </div>
@@ -84,7 +84,7 @@
 
                                             <div class="form-group m-b-20 row">
                                                 <div class="col-12">
-                                                    <label for="email_login">Email111</label>
+                                                    <label for="email_login">Email</label>
                                                     <input class="form-control" type="email" name="email_login" id="email_login" required="" placeholder="john@deo.com" value="<?=  $this->session->flashdata('email_error')? $this->session->flashdata('email_error'): ""?>">
                                                 </div>
                                             </div>
@@ -125,8 +125,8 @@
                         <div class="wrapper-page">
 
                             <div class="account-pages text-center">
-                                <h1>SIGN IN TO GET STARTED</h2>
-                                <p>Adminpro, your BD dynamic in little time.</p>
+                                <h1>INICIAR SESIÓN</h2>
+                                <p>Mochiklero, powered by delycomp.</p>
                             </div>
 
                         </div>
@@ -136,7 +136,7 @@
                         <div class="wrapper-page">
 
                             <div class="account-pages text-center pl-4 pr-4">
-                                <h1>WELCOME THE ADMIN OF ADMINOX, REGISTER YOUR USER.</h2>
+                                <h1>Bienvenido al Gestor Mochiklero.</h2>
                                 <p>You have to wait to aprobate from de admin.</p>
                             </div>
 

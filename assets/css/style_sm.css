@@ -1,9 +1,9 @@
 @charset "UTF-8";
-/*
-Template Name: Adminox Dashboard
-Author: CoderThemes
-Email: coderthemes@gmail.com
-File: Main Css
+/*
+Template Name: Adminox Dashboard
+Author: CoderThemes
+Email: coderthemes@gmail.com
+File: Main Css
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Karla:700|Nunito+Sans:600,700");
 /* Metis Menu css */
@@ -663,8 +663,8 @@ body.enlarged.bg-transparent {
   width: 36px;
 }
 
-/* =============
-   Common
+/* =============
+   Common
 ============= */
 body {
   margin: 0;
@@ -729,8 +729,8 @@ a:focus {
   width: 100%;
 }
 
-/* =============
-   Helper classes
+/* =============
+   Helper classes
 ============= */
 .p-0 {
   padding: 0 !important;
@@ -1007,11 +1007,11 @@ a:focus {
   background-color: #ffffff;
 }
 
-/* =============
-   Extras
+/* =============
+   Extras
 ============= */
-/* =============
-   Demo Css
+/* =============
+   Demo Css
 ============= */
 .demo-box {
   padding: 10px 15px;
@@ -1137,8 +1137,8 @@ a:focus {
   margin: 2.2rem;
 }
 
-/* =============
-   Bootstrap-custom
+/* =============
+   Bootstrap-custom
 ============= */
 .row {
   margin-right: -10px;
@@ -1513,13 +1513,13 @@ a:focus {
   color: fade(#ffffff, 70%);
 }
 
-/*!
- * Waves v0.6.0
- * http://fian.my.id/Waves
- *
- * Copyright 2014 Alfiana E. Sibuea and other contributors
- * Released under the MIT license
- * https://github.com/fians/Waves/blob/master/LICENSE
+/*!
+ * Waves v0.6.0
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 .waves-effect {
   position: relative;
@@ -1645,8 +1645,8 @@ a:focus {
   background-color: fade(#36404c, 40%);
 }
 
-/* =================
-   Popover / Tooltips
+/* =================
+   Popover / Tooltips
 ==================== */
 /* Popover */
 .popover {
@@ -1723,8 +1723,8 @@ a:focus {
   border-right-color: #64c5b1;
 }
 
-/* =============
-   Buttons
+/* =============
+   Buttons
 ============= */
 .btn {
   border-radius: 2px;
@@ -2105,8 +2105,8 @@ a:focus {
   background-color: #171515 !important;
 }
 
-/* =============
-   Portlets
+/* =============
+   Portlets
 ============= */
 .portlet {
   background: #ffffff;
@@ -2199,8 +2199,8 @@ a:focus {
   margin-top: -15px;
 }
 
-/* =============
-   Checkbox and Radios
+/* =============
+   Checkbox and Radios
 ============= */
 .checkbox label {
   display: inline-block;
@@ -2554,8 +2554,8 @@ a:focus {
   background-color: #ec6794;
 }
 
-/* =============
-   Modals
+/* =============
+   Modals
 ============= */
 .modal .modal-dialog .close {
   top: 0;
@@ -2647,8 +2647,8 @@ a:focus {
   z-index: 9999;
 }
 
-/* =============
-   Tabs
+/* =============
+   Tabs
 ============= */
 .tab-content {
   padding: 20px 0 0 0;
@@ -2721,8 +2721,8 @@ a:focus {
   background-color: #64c5b1;
 }
 
-/* =============
-   Progressbars
+/* =============
+   Progressbars
 ============= */
 .progress {
   -webkit-box-shadow: none !important;
@@ -2861,8 +2861,8 @@ a:focus {
   line-height: 20px;
 }
 
-/* =============
-   Alerts
+/* =============
+   Alerts
 ============= */
 .alert {
   position: relative;
@@ -3014,8 +3014,8 @@ a:focus {
   border-radius: 0;
 }
 
-/* =============
-   Carousel
+/* =============
+   Carousel
 ============= */
 .carousel-control {
   width: 10%;
@@ -3095,8 +3095,8 @@ a:focus {
   border: 2px solid #64c5b1;
 }
 
-/* =============
-   Widgets
+/* =============
+   Widgets
 ============= */
 .widget-box-one .widget-one-icon {
   position: absolute;
@@ -3346,8 +3346,8 @@ a:focus {
   border-color: #64c5b1;
 }
 
-/* =============
-   Nestable
+/* =============
+   Nestable
 ============= */
 .custom-dd .dd-list .dd-item .dd-handle {
   background: #f3f3f3;
@@ -3435,8 +3435,8 @@ a:focus {
   height: auto;
 }
 
-/* =============
-   Rating
+/* =============
+   Rating
 ============= */
 .rating-md i {
   font-size: 18px;
@@ -3446,8 +3446,8 @@ a:focus {
   font-size: 24px;
 }
 
-/* =============
-   Calendar
+/* =============
+   Calendar
 ============= */
 .calendar {
   float: left;
@@ -3612,8 +3612,8 @@ a:focus {
   color: #ffffff;
 }
 
-/* =============
-   Form
+/* =============
+   Form
 ============= */
 /* Form components */
 label {
@@ -4015,8 +4015,8 @@ textarea.form-control {
   border-bottom-right-radius: 0;
 }
 
-/* =============
-   Form wizard
+/* =============
+   Form wizard
 ============= */
 .stepy-step {
   padding: 0 20px;
@@ -4166,8 +4166,8 @@ textarea.form-control {
   margin-top: 20px;
 }
 
-/* =============
-   Summernote
+/* =============
+   Summernote
 ============= */
 .note-editor {
   position: relative;
@@ -4250,8 +4250,8 @@ textarea.form-control {
   display: none;
 }
 
-/* =============
-   Wysiwig
+/* =============
+   Wysiwig
 ============= */
 .mce-panel {
   border: 1px solid #f3f3f3 !important;
@@ -4285,8 +4285,8 @@ textarea.form-control {
   border-bottom: 0 !important;
 }
 
-/* =============
-   Form Uploads
+/* =============
+   Form Uploads
 ============= */
 .jFiler-input-dragDrop {
   width: 100%;
@@ -4304,8 +4304,8 @@ textarea.form-control {
   border: 1px solid #64c5b1 !important;
 }
 
-/* =============
-   Tables
+/* =============
+   Tables
 ============= */
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
   padding: 12px 10px;
@@ -4906,8 +4906,8 @@ table.dataTable thead th {
   background-color: #5553ce;
 }
 
-/* =====================================
-   CHARTS
+/* =====================================
+   CHARTS
    ===================================== */
 .chart-detail-list li {
   margin: 0 10px;
@@ -5142,8 +5142,8 @@ table.dataTable thead th {
   font-family: "Open Sans", sans-serif !important;
 }
 
-/* =================
-   Spinners
+/* =================
+   Spinners
 ==================== */
 .sk-rotating-plane, .sk-double-bounce .sk-child, .sk-wave .sk-rect, .sk-wandering-cubes .sk-cube, .sk-spinner-pulse,
 .sk-chasing-dots .sk-child, .sk-three-bounce .sk-child, .sk-circle .sk-child:before, .sk-cube-grid .sk-cube,
@@ -5155,8 +5155,8 @@ table.dataTable thead th {
   margin-top: 0;
 }
 
-/* =================
-   Typehead
+/* =================
+   Typehead
 ==================== */
 .twitter-typeahead {
   display: inherit !important;
@@ -5222,8 +5222,8 @@ table.dataTable thead th {
   padding: 3px 20px;
 }
 
-/* =================
-   Ribbons
+/* =================
+   Ribbons
 ==================== */
 .ribbon-box {
   position: relative;
@@ -5506,8 +5506,8 @@ table.dataTable thead th {
   border-top: 3px solid #161a1f;
 }
 
-/* =================
-   Todoapp
+/* =================
+   Todoapp
 ==================== */
 .todo-list .checkbox input[type="checkbox"]:checked + label {
   text-decoration: line-through;
@@ -5524,8 +5524,8 @@ table.dataTable thead th {
   border-bottom: 1px solid transparent;
 }
 
-/* =============
-   Email
+/* =============
+   Email
 ============= */
 .inbox-leftbar {
   width: 240px;
@@ -5731,8 +5731,8 @@ table.dataTable thead th {
   }
 }
 
-/* =============
-   Maps
+/* =============
+   Maps
 ============= */
 .gmaps,
 .gmaps-panaroma {
@@ -5850,8 +5850,8 @@ table.dataTable thead th {
   top: 50px;
 }
 
-/* =============
-   About Us
+/* =============
+   About Us
 ============= */
 .border {
   height: 4px;
@@ -5898,8 +5898,8 @@ table.dataTable thead th {
   color: #98a6ad;
 }
 
-/* =============
-   Contact Us
+/* =============
+   Contact Us
 ============= */
 .contact-map {
   background-color: #f3f3f3;
@@ -5927,8 +5927,8 @@ table.dataTable thead th {
   color: #496174;
 }
 
-/* =============
-   Members list
+/* =============
+   Members list
 ============= */
 .member-card .member-thumb {
   position: relative;
@@ -5984,8 +5984,8 @@ table.dataTable thead th {
   border: 2px solid #797979;
 }
 
-/* =============
-   Timeline
+/* =============
+   Timeline
 ============= */
 .timeline {
   border-collapse: collapse;
@@ -6221,8 +6221,8 @@ h3.timeline-title {
   margin-bottom: 20px;
 }
 
-/* =============
-   Count Down
+/* =============
+   Count Down
 ============= */
 .count-down-bg {
   background: url("../images/bg-countdown.jpg");
@@ -6284,8 +6284,8 @@ h3.timeline-title {
   }
 }
 
-/* =============
-   FAQ
+/* =============
+   FAQ
 ============= */
 .faq-box {
   text-align: center;
@@ -6309,8 +6309,8 @@ h3.timeline-title {
   font-size: 13px;
 }
 
-/* =============
-   Pricing
+/* =============
+   Pricing
 ============= */
 .pricing-column {
   position: relative;
@@ -6376,8 +6376,8 @@ h3.timeline-title {
   background: #34d3eb;
 }
 
-/* =============
-   Account Pages
+/* =============
+   Account Pages
 ============= */
 .home-wrapper {
   margin: 10% 0;
@@ -6509,8 +6509,8 @@ h3.timeline-title {
   }
 }
 
-/* =============
-   Maintenance
+/* =============
+   Maintenance
 ============= */
 .svg-computer {
   stroke-dasharray: 1134;
@@ -6537,8 +6537,8 @@ h3.timeline-title {
   fill: #ffffff;
 }
 
-/* ====
-Lightbox
+/* ====
+Lightbox
 ===== */
 .lb-data .lb-caption {
   font-family: "Nunito Sans", sans-serif;
@@ -6551,8 +6551,8 @@ Lightbox
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* ===========
-File Manager
+/* ===========
+File Manager
 ============== */
 .file-man-box {
   padding: 20px;
@@ -6604,8 +6604,8 @@ File Manager
   visibility: visible;
 }
 
-/* ===========
-Slider
+/* ===========
+Slider
 ============== */
 .slick-prev, .slick-next {
   width: 36px;
@@ -6658,8 +6658,8 @@ Slider
   border-left: 3px solid #ffffff;
 }
 
-/* ===========
-Tickets
+/* ===========
+Tickets
 ============== */
 .tickets-list a {
   color: #797979;
@@ -6671,8 +6671,8 @@ Tickets
   width: 32px;
 }
 
-/* ===========
-Companies
+/* ===========
+Companies
 ============== */
 .company-card .company-logo {
   float: left;
@@ -6684,8 +6684,8 @@ Companies
   margin-left: 75px;
 }
 
-/* =============
-   Tree view page
+/* =============
+   Tree view page
 ============= */
 .jstree-default {
   font-size: 12px;
@@ -6718,8 +6718,8 @@ Companies
   font-size: 18px;
 }
 
-/* =============
-   Sitemaps
+/* =============
+   Sitemaps
 ============= */
 .sitemap > li > ul {
   margin-top: 1.5rem;
@@ -6786,8 +6786,8 @@ ul.sitemap-icon ul li a {
   margin-left: 2.75rem;
 }
 
-/* =============
-   Profile
+/* =============
+   Profile
 ============= */
 .profile-bg-picture {
   position: relative;
@@ -6821,8 +6821,8 @@ ul.sitemap-icon ul li a {
   border-radius: 5px;
 }
 
-/* =============
-   Search result
+/* =============
+   Search result
 ============= */
 .search-result-box .tab-content {
   padding: 30px 30px 10px 30px;
@@ -6837,8 +6837,8 @@ ul.sitemap-icon ul li a {
   margin-bottom: 20px;
 }
 
-/* =============
-   Task board
+/* =============
+   Task board
 ============= */
 .taskList {
   min-height: 40px;
@@ -6931,8 +6931,8 @@ ul.sitemap-icon ul li a {
   white-space: nowrap;
 }
 
-/* =============
-   Print css
+/* =============
+   Print css
 ============= */
 @media print {
   .page-title-box, .topbar-left, .hidden-print, .breadcrumb, .page-title, .footer, .topbar {
@@ -6958,11 +6958,11 @@ ul.sitemap-icon ul li a {
   }
 }
 
-/*
-Template Name: Adminox Dashboard
-Author: CoderThemes
-Email: coderthemes@gmail.com
-File: Responsive
+/*
+Template Name: Adminox Dashboard
+Author: CoderThemes
+Email: coderthemes@gmail.com
+File: Responsive
 */
 @media (min-width: 768px) and (max-width: 991px) {
   body {

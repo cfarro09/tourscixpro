@@ -11,7 +11,7 @@
             <i class="fi-air-play"></i><span> Administrator </span>
           </a>
           <ul class="nav-second-level" aria-expanded=false>
-            <li><a href="<?= site_url() ?>admin">Admin</a></li>
+            <li><a href="<?= site_url() ?>admin">Admin</a></li>a
             <li><a href="<?= site_url() ?>admin/configurator">Configurador</a></li>
           </ul>
         </li>
